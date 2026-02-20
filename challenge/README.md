@@ -60,7 +60,7 @@ Your submission will consist of two parts:
 # Support
 
 The mentors for this challenge are:
-* Shantanu Jha - a PhD student building error corrected bosonic qubits at MIT
-* Diego Polimeni - a researcher of fault-tolerant compilation and hardware integration at RheinMain University 
+* Diego Polimeni - EPFL QSE graduate, researcher of fault-tolerant compilation and hardware integration at RheinMain University 
+* Laurent Prost - Product Manager at Alice&Bob
 
 Please do not hesitate to come to us with any questions you may have. We are here to help you.
