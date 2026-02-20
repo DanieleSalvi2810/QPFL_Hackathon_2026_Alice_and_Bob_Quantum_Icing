@@ -1,7 +1,7 @@
 # Alice & Bob x EPFL QH26 Challenge
 
 <p align="center">
-  <img src="logos/alice_bob.png" alt="Alice & Bob logo" width="220" />
+  <img src="logos/alice_bob.png" alt="Alice & Bob logo" width="220" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="logos/epfl.png" alt="EPFL logo" width="220" />
 </p>
 
