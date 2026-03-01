@@ -222,6 +222,17 @@ def golay24_theory_block_fail_for_table(p: float, corr_table: np.ndarray) -> flo
 
 
 
+# ----------------------------
+# Parameters (tune as needed)
+# ----------------------------
+p_values = np.geomspace(3e-3, 2e-1, 18)
+shots_L1 = 200_000
+shots_L2 = 200_000
+num_iters = 2
+batch_size = 5_000
+num_iters = 2           # number of row/col decoding sweeps
+seed_base = 12345
+eps = 1e-12
 
 # -------------------------
 # Configuration
