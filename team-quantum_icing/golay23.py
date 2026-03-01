@@ -75,14 +75,6 @@ print('rank(G):', np.linalg.matrix_rank(GOLAY23_G.astype(float)))
 
 
 
-def golay23_encode(message_bits) -> np.ndarray:
-    """Encode 12 message bits into a 23-bit Golay codeword."""
-    m = np.array(message_bits, dtype=np.uint8).reshape(-1)
-    if m.size != 12:
-        raise ValueError(f'Expected 12 message bits, got {m.size}.')
-    return (m @ GOLAY23_G) % 2
-
-
 def build_golay23_syndrome_table():
     """Map each syndrome to a minimum-weight error pattern (weight <= 3)."""
     table = {}
@@ -105,29 +97,6 @@ GOLAY23_SYNDROME_TABLE = build_golay23_syndrome_table()
 print('Syndromes in table:', len(GOLAY23_SYNDROME_TABLE), '(expected 2048)')
 
 
-def golay23_decode(received_bits, return_codeword=False):
-    """
-    Decode a 23-bit received word with bounded-distance syndrome decoding.
-
-    Returns:
-      - message (12 bits) if return_codeword=False
-      - (message, corrected_codeword, estimated_error) otherwise
-    """
-    r = np.array(received_bits, dtype=np.uint8).reshape(-1)
-    if r.size != 23:
-        raise ValueError(f'Expected 23 received bits, got {r.size}.')
-
-    syndrome = tuple((GOLAY23_H @ r) % 2)
-    e_hat = GOLAY23_SYNDROME_TABLE.get(syndrome)
-    if e_hat is None:
-        raise RuntimeError('Syndrome not found in decoder table.')
-
-    c_hat = r ^ e_hat
-    m_hat = c_hat[:12]
-
-    if return_codeword:
-        return m_hat, c_hat, e_hat
-    return m_hat
 
 
 def golay23_quantum_x_memory_circuit(p: float) -> stim.Circuit:
@@ -203,3 +172,4 @@ def golay23_quantum_block_error_rate(p: float, shots: int = 20000) -> float:
 def golay23_theory_block_fail(p: float) -> float:
     """Theoretical block-failure probability for t=3 correction on BSC(p)."""
     return 1 - sum(math.comb(23, i) * (p ** i) * ((1 - p) ** (23 - i)) for i in range(4))
+x
