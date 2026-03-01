@@ -137,12 +137,5 @@ def gen_simple_ldpc_circuit(d, k, data_anc_conn, anc_data_conn, prob) -> stim.Ci
         circuit.append("DETECTOR", [stim.target_rec(-1)])
     
     circuit.append("M", data)
-    for i in range(0,d-k):
-        rec = []
-        for j in data:
-            if(H[i][j] == 1):
-                rec.append(stim.target_rec(-d+j))
-        circuit.append("OBSERVABLE_INCLUDE", rec,0)
-
  
     return circuit
