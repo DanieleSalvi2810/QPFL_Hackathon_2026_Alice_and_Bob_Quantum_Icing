@@ -172,4 +172,3 @@ def golay23_quantum_block_error_rate(p: float, shots: int = 20000) -> float:
 def golay23_theory_block_fail(p: float) -> float:
     """Theoretical block-failure probability for t=3 correction on BSC(p)."""
     return 1 - sum(math.comb(23, i) * (p ** i) * ((1 - p) ** (23 - i)) for i in range(4))
-x
